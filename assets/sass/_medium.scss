@@ -1,9 +1,8 @@
 @media (min-width: 768px) {
 	.nav {
-
-        .wrapper{
-            height: 100%;
-        }
+		.wrapper {
+			height: 100%;
+		}
 
 		&__list {
 			position: relative;
@@ -18,11 +17,22 @@
 
 		&__item {
 			padding: 0.5em;
-            font-size: 2.6rem;
+			font-size: 2.6rem;
 		}
 
 		&__btn {
 			display: none;
 		}
+	}
+
+	.header {
+		&__title {
+			font-size: 6.4rem;
+			letter-spacing: 4px;
+		}
+
+        &__text {
+            font-size: 2.6rem;
+        }
 	}
 }

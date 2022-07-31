@@ -1,3 +1,14 @@
+@use "colors" as *;
 @media (min-width: 576px) {
-    
+	.header {
+		&__title {
+			font-size: 4.8rem;
+			text-shadow: 0 0 7px $main-color;
+		}
+
+        &__text {
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+        }
+	}
 }
