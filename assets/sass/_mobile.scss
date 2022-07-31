@@ -4,9 +4,12 @@
 // NAV
 
 .nav {
-	position: relative;
+	position: fixed;
+	width: 100%;
+	top: 0;
 	background-color: $main-color;
 	height: 60px;
+	z-index: 3;
 
 	&__hide {
 		overflow: hidden;
@@ -65,11 +68,12 @@
 }
 
 .header {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 80vh;
+	height: 100vh;
 	background-image: $light-blue-gradient, url("./../img/swimmers-small.jpg");
 	background-position: center;
 	background-size: cover;
@@ -88,6 +92,35 @@
 		font-size: 1.8rem;
 		letter-spacing: 1px;
 	}
+
+	&__arrow {
+		position: absolute;
+		bottom: 50px;
+		left: 50%;
+		width: 50px;
+		height: 50px;
+		transform: translateX(-50%);
+		background-image: url(./../icon/arrow-down-circle.svg);
+		background-position: center;
+		background-size: cover;
+		animation: arrow 3s linear infinite;
+	}
+}
+
+.section {
+	padding: 3em 1em;
+}
+
+.section-header {
+	font-size: 2.6rem;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 2px;
+	margin-bottom: 1em;
+}
+
+.about-us {
+
 }
 
 @keyframes navAnimation {
@@ -96,5 +129,23 @@
 	}
 	to {
 		transform: translateX(0);
+	}
+}
+
+@keyframes arrow {
+	0% {
+		bottom: 50px;
+	}
+	40% {
+		bottom: 30px;
+	}
+	50% {
+		bottom: 40px;
+	}
+	60% {
+		bottom: 30px;
+	}
+	100% {
+		bottom: 50px;
 	}
 }

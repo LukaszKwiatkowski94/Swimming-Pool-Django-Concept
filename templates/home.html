@@ -4,9 +4,68 @@
 <header class="header">
 	<div class="wrapper">
 		<h1 class="header__title">swimming pool</h1>
-        <p class="header__text">The best water sport with us.</p>
+		<p class="header__text">The best water sport with us.</p>
+		<span class="header__arrow"></span>
 	</div>
 </header>
-<main></main>
+<main>
+	<section class="section about-us" id="about-us">
+		<div class="wrapper">
+			<h2 class="section-header">about us</h2>
+			<div class="about-us__box">
+                <div class="about-us__modern-img">
+                    <img
+                        src="{% static 'img/modern.jpg' %}"
+                        alt="Modern swimming pool"
+                        class="about-us__img"
+                    />
+                </div>
+				<div class="about-us__modern-info">
+					<h3 class="about-us__box-header">
+						The most modern swimming pool in the country
+					</h3>
+					<p class="about-us__box-text">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore,
+						perferendis. Dolorum, ad laudantium atque perspiciatis dolore in
+						aut? Eveniet, libero rem expedita excepturi adipisci tempore porro
+						blanditiis voluptates fuga nesciunt.
+					</p>
+				</div>
+                <div class="about-us__ranking-img">
+                    <img
+                        src="{% static 'img/ranking.jpg' %}"
+                        alt="Water in swimming pool"
+                        class="about-us__img"
+                    />
+                </div>
+				<div class="about-us__ranking-info">
+					<h3 class="about-us__box-header">High marks in rankings</h3>
+					<p class="about-us__box-text">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore,
+						perferendis. Dolorum, ad laudantium atque perspiciatis dolore in
+						aut? Eveniet, libero rem expedita excepturi adipisci tempore porro
+						blanditiis voluptates fuga nesciunt.
+					</p>
+				</div>
+                <div class="about-us__customers-img">
+                    <img
+                        src="{% static 'img/customers.jpg' %}"
+                        alt="Happy women on swimming pool"
+                        class="about-us__img"
+                    />
+                </div>
+				<div class="about-us__customers-info">
+					<h3 class="about-us__box-header">Many satisfied customers</h3>
+					<p class="about-us__box-text">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore,
+						perferendis. Dolorum, ad laudantium atque perspiciatis dolore in
+						aut? Eveniet, libero rem expedita excepturi adipisci tempore porro
+						blanditiis voluptates fuga nesciunt.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
 
 {% endblock %}
