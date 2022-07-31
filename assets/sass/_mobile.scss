@@ -6,8 +6,11 @@
 .nav {
 	position: relative;
 	background-color: $main-color;
-	overflow: hidden;
 	height: 60px;
+
+    &__hide{
+        overflow: hidden;
+    }
 
 	&__list {
 		position: absolute;
@@ -23,8 +26,13 @@
 		transform: translateX(110%);
 		background-color: $second-color;
 		transition: transform 0.5s;
-        z-index: 1;
+		z-index: 1;
 	}
+
+	&__show-animation {
+		animation: navAnimation 0.5s linear forwards;
+	}
+
 	&__item {
 		font-size: 3.2rem;
 		text-decoration: none;
@@ -32,23 +40,35 @@
 		color: $winter-color;
 	}
 
-    &__btn{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
-        background: none;
-        border: none;
-        cursor: pointer;
+	&__btn {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 40px;
+		height: 40px;
+		background: none;
+		border: none;
+		cursor: pointer;
+        z-index: 1000;
 
-        &-content {
-            width: 100%;
-            height: 100%;
-            background-image: url(../../static/icon/menu.svg);
-            background-size: cover;
-            z-index: 1000;
+		&-content {
+			width: 100%;
+			height: 100%;
+			background-image: url(../../static/icon/menu.svg);
+			background-size: cover;
+		}
+
+        &--exit{
+            background-image: url(../../static/icon/x.svg);
         }
-    }
+	}
+}
 
+@keyframes navAnimation {
+	from {
+		transform: translateX(110%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }

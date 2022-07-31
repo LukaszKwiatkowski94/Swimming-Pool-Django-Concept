@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="{% static 'css/main.min.css' %}" />
 	</head>
 	<body>
-		<nav class="nav">
+		<nav class="nav nav__hide">
 			<div class="wrapper">
 				<button class="nav__btn">
 					<div class="nav__btn-content"></div>
@@ -26,6 +26,7 @@
 		<!-- Content -->
 		{% block content %} {% endblock %}
 		<footer class="footer"></footer>
+		<script src="{% static 'js/main.min.js' %}"></script>
 		{% block script %} {% endblock %}
 	</body>
 </html>

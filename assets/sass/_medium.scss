@@ -1,0 +1,28 @@
+@media (min-width: 768px) {
+	.nav {
+
+        .wrapper{
+            height: 100%;
+        }
+
+		&__list {
+			position: relative;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			margin-bottom: 0;
+			height: 100%;
+			transform: translate(0);
+			background-color: transparent;
+		}
+
+		&__item {
+			padding: 0.5em;
+            font-size: 2.6rem;
+		}
+
+		&__btn {
+			display: none;
+		}
+	}
+}
