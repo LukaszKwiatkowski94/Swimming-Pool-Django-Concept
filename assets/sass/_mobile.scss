@@ -4,5 +4,51 @@
 // NAV
 
 .nav {
-	background-color: aqua;
+	position: relative;
+	background-color: $main-color;
+	overflow: hidden;
+	height: 60px;
+
+	&__list {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		height: 100vh;
+		transform: translateX(110%);
+		background-color: $second-color;
+		transition: transform 0.5s;
+        z-index: 1;
+	}
+	&__item {
+		font-size: 3.2rem;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $winter-color;
+	}
+
+    &__btn{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        &-content {
+            width: 100%;
+            height: 100%;
+            background-image: url(../../static/icon/menu.svg);
+            background-size: cover;
+            z-index: 1000;
+        }
+    }
+
 }
