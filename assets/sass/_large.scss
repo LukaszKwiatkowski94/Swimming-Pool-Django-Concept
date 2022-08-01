@@ -14,4 +14,25 @@
             letter-spacing: 5px;
         }
 	}
+
+    .section {
+        padding: 4.2em 2.2em;
+    }
+
+    .section-header {
+		font-size: 3.8rem;
+	}
+
+    .about-us{
+		&__box-header {
+			margin: 0.5em 0;
+			font-size: 3.4rem;
+		}
+	
+		&__box-text {
+			font-size: 2.6rem;
+			line-height: 3.2rem;
+			padding: 0.7em;
+		}
+	}
 }
