@@ -19,7 +19,12 @@
 					<a href="#" class="nav__item">Offer</a>
 					<a href="#" class="nav__item">Blog</a>
 					<a href="#" class="nav__item">Contact</a>
-					<a href="#" class="nav__item">Log In</a>
+					{% if request.is_user %}
+						<a href="/user/logout/" class="nav__item">Log Out</a>
+					{% else %}
+						<a href="/user/signin/" class="nav__item">Sign In</a>
+						<a href="/user/signup/" class="nav__item">Sign Up</a>
+					{% endif %}
 				</div>
 			</div>
 		</nav>

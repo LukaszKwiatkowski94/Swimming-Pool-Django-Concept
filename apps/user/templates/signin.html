@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %} - Log In{% endblock%} 
+{% block content %} 
+{% load static %}
+<main>
+    <section class="section signin page-section">
+        <div class="wrapper">
+            <h2 class="section-header"></h2>
+            <form class="signin__form" method="POST">
+                {% csrf_token %}
+                <div class="signin__box">
+
+                    <div class="signin__email input-box">
+                        <label for="email">Your email address:</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+                    
+                    <div class="signin__password input-box">
+                        <label for="password">password</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+
+{% endblock %}
