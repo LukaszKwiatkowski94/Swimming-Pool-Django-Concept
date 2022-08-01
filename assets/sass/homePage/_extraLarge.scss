@@ -1,2 +1,11 @@
 @media (min-width: 1200px) {
+	.header {
+		&__title {
+			letter-spacing: 12px;
+		}
+
+		&__text {
+			font-size: 3.6rem;
+		}
+	}
 }

@@ -1,2 +1,26 @@
+@use "../utilities/colors" as *;
 @media (min-width: 768px) {
+	.header {
+		&__title {
+			font-size: 6.4rem;
+			letter-spacing: 4px;
+		}
+
+		&__text {
+			font-size: 2.6rem;
+		}
+	}
+
+	.about-us {
+		&__box-header {
+			margin: 0.5em 0;
+			font-size: 2.8rem;
+		}
+
+		&__box-text {
+			font-size: 2.2rem;
+			line-height: 2.8rem;
+			padding: 0.5em;
+		}
+	}
 }

@@ -1,6 +1,2 @@
-@use "reset" as *;
-@use "mobile" as *;
-@use "small" as *;
-@use "medium" as *;
-@use "large" as *;
-@use "extraLarge" as *;
+@use "utilities/reset" as *;
+@forward "mainParts";

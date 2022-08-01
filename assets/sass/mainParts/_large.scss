@@ -1,0 +1,10 @@
+@use "../utilities/colors" as *;
+@media (min-width: 992px) {
+    .section {
+        padding: 4.2em 2.2em;
+    }
+
+    .section-header {
+		font-size: 3.8rem;
+	}
+}
