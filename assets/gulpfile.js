@@ -9,7 +9,8 @@ const imagemin = require("gulp-imagemin");
 const sourcemaps = require("gulp-sourcemaps");
 
 paths = {
-	sass: "./sass/**/*.scss",
+	// sass: "./sass/**/*.scss",
+	sass: "./sass/*.scss",
 	sassDest: "./../static/css",
 	js: "./js/**/*.js",
 	jsDest: "./../static/js",

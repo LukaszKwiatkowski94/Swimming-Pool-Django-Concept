@@ -1,6 +1,8 @@
-{% extends "base.html" %} {% block title %} - Sign Up{% endblock%} 
-{% block content %} 
+{% extends "base.html" %} 
 {% load static %}
+{% block title %} - Sign Up{% endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/user.min.css' %}">{% endblock%} 
+{% block content %} 
 <main>
     <section class="section signup page-section">
         <div class="wrapper">
