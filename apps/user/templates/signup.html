@@ -12,42 +12,42 @@
                 <div class="signup__box">
 
                     <div class="signup__email input-box">
-                        <label for="{{ form.email.id_for_label}}">{{ form.email.label }}</label>
+                        <label class="input-box__label" for="{{ form.email.id_for_label}}">{{ form.email.label }}</label>
                         {{ form.email }}
                         <p class="form-error">{{ form.email.error }}</p>
                     </div>
                     
                     <div class="signup__nameUser input-box">
-                        <label for="{{ form.nameUser.id_for_label}}">{{ form.nameUser.label }}</label>
+                        <label class="input-box__label" for="{{ form.nameUser.id_for_label}}">{{ form.nameUser.label }}</label>
                         {{ form.nameUser }}
                         <p class="form-error">{{ form.nameUser.error }}</p>
                     </div>
                     
                     <div class="signup__surnameUser input-box">
-                        <label for="{{ form.surnameUser.id_for_label}}">{{ form.surnameUser.label }}</label>
+                        <label class="input-box__label" for="{{ form.surnameUser.id_for_label}}">{{ form.surnameUser.label }}</label>
                         {{ form.surnameUser }}
                         <p class="form-error">{{ form.surnameUser.error }}</p>
                     </div>
                     
                     <div class="signup__password1 input-box">
-                        <label for="{{ form.password1.id_for_label}}">{{ form.password1.label }}</label>
+                        <label class="input-box__label" for="{{ form.password1.id_for_label}}">{{ form.password1.label }}</label>
                         {{ form.password1 }}
-                        <p class="form-helptext">
-                            {{form.password1.help_text}}
-                        </p>
+                        <span class="form-helptext">
+                            {{ form.password1.help_text }}
+                        </span>
                         <p class="form-error">{{ form.password1.error }}</p>
                     </div>
                     
                     <div class="signup__password2 input-box">
-                        <label for="{{ form.password2.id_for_label}}">{{ form.password2.label }}</label>
+                        <label class="input-box__label" for="{{ form.password2.id_for_label}}">{{ form.password2.label }}</label>
                         {{ form.password2 }}
                         <p class="form-helptext">
                             {{form.password2.help_text}}
                         </p>
                         <p class="form-error">{{ form.password2.error }}</p>
                     </div>
+                    <button type="submit" class="signup__btn btn">sign up</button>
                 </div>
-                <button type="submit" class="btn">sign up</button>
             </form>
         </div>
     </section>
