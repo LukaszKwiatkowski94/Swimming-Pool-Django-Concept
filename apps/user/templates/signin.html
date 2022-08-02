@@ -1,6 +1,8 @@
-{% extends "base.html" %} {% block title %} - Log In{% endblock%} 
-{% block content %} 
+{% extends "base.html" %} 
 {% load static %}
+{% block title %} - Log In{% endblock%}
+{% block style %}<link rel="stylesheet" href="{% static 'css/user.min.css' %}">{% endblock%} 
+{% block content %} 
 <main>
     <section class="section signin page-section">
         <div class="wrapper">
