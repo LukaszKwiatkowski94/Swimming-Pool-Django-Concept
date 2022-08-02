@@ -6,22 +6,22 @@
 <main>
     <section class="section signin page-section">
         <div class="wrapper">
-            <h2 class="section-header"></h2>
+            <h2 class="section-header">Sign In</h2>
             <form class="signin__form" method="POST">
                 {% csrf_token %}
                 <div class="signin__box">
 
                     <div class="signin__email input-box">
-                        <label for="email">Your email address:</label>
+                        <label class="input-box__label" for="email">Your email address:</label>
                         <input type="email" name="email" id="email">
                     </div>
                     
                     <div class="signin__password input-box">
-                        <label for="password">password</label>
+                        <label class="input-box__label" for="password">Password</label>
                         <input type="password" name="password" id="password">
                     </div>
+                    <button type="submit" class="btn">Sign In</button>
                 </div>
-                <button type="submit" class="btn">Sign In</button>
             </form>
         </div>
     </section>

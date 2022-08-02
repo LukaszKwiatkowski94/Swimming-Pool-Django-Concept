@@ -77,3 +77,13 @@ input {
 		line-height: 3rem;
 	}
 }
+
+.signin{
+    height: 100vh;
+	// margin-top: calc(60px + 3rem);
+
+    &__box{
+        display: flex;
+        flex-direction: column;
+    }
+}
