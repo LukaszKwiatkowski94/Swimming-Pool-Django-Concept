@@ -20,7 +20,7 @@
 					<a href="#" class="nav__item">Offer</a>
 					<a href="#" class="nav__item">Blog</a>
 					<a href="#" class="nav__item">Contact</a>
-					{% if request.is_user %}
+					{% if user.is_authenticated %}
 						<a href="/user/logout/" class="nav__item">Log Out</a>
 					{% else %}
 						<a href="/user/signin/" class="nav__item">Sign In</a>
