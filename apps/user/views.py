@@ -39,7 +39,7 @@ def signinPage(request):
 		context = {}
 		return render(request, 'signin.html', context)
 
-@administrator_required
+# @administrator_required
 def setRule(request):
 	context = {}
 	return render(request, 'rule.html', context)

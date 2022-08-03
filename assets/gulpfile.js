@@ -47,6 +47,6 @@ function convertImages(done) {
 	done();
 }
 
-
-const mainFunctions = parallel(sassCompiler, javaScript, convertImages);
+const mainFunctions = parallel(sassCompiler, javaScript);
 exports.default = series(mainFunctions);
+exports.image = convertImages;
