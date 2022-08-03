@@ -5,6 +5,7 @@ from .forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from SwimmingPoolDjangoConcept.decorators import administrator_required
 
 def createUser(request):
     if request.user.is_authenticated:
@@ -34,6 +35,11 @@ def signinPage(request):
 
 		context = {}
 		return render(request, 'signin.html', context)
+
+@administrator_required
+def setRule(request):
+	context = {}
+	return render(request, 'rule.html', context)
 
 @login_required
 def logoutUser(request):
