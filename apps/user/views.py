@@ -5,7 +5,10 @@ from .forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import Http404, HttpResponse
 from SwimmingPoolDjangoConcept.decorators import administrator_required
+from django.core.serializers.json import DjangoJSONEncoder
+import json
 
 def createUser(request):
     if request.user.is_authenticated:
@@ -40,6 +43,24 @@ def signinPage(request):
 def setRule(request):
 	context = {}
 	return render(request, 'rule.html', context)
+
+# @administrator_required
+def getUsersList(request):
+	if request.is_ajax():
+		user = User.objects.filter().all()
+		data = json.dumps(list(user), cls=DjangoJSONEncoder)
+		return HttpResponse(data, content_type='application/json')
+	else:
+		raise Http404
+
+# @administrator_required
+def getUser(request):
+	if request.is_ajax():
+		user = ""
+		data = json.dumps(list(user), cls=DjangoJSONEncoder)
+		return HttpResponse(data, content_type='application/json')
+	else:
+		raise Http404
 
 @login_required
 def logoutUser(request):

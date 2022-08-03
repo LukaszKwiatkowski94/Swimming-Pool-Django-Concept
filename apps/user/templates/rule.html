@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %} - Set rule for User{% endblock%}
+{% block style %}<link rel="stylesheet" href="{% static 'css/user.min.css' %}">{% endblock%} 
+{% block content %} 
+<main>
+    <section class="section set-rule page-section">
+        <div class="wrapper">
+            <h2 class="section-header">Set rule for user</h2>
+            <div class="set-rule__box">
+                <label for="">Find user by e-mail:</label>
+                <input type="email" name="email" id="email">
+                <hr class="set-rule__hr">
+                <div class="set_rule__users">
+                    <!-- code box users from js-->
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+{% block script %} 
+<script src="{% static 'js/setRule.min.js' %}"></script>
+{% endblock %}
