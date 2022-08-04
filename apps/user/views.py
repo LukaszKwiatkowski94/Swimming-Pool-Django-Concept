@@ -1,3 +1,4 @@
+import email
 from django.shortcuts import render, redirect
 from .models import User
 from .forms import UserCreationForm
@@ -53,7 +54,7 @@ def getUsersList(request):
 		body = json.loads(body_unicode)
 		emailData = body['email']
 		user = User.objects.all().filter(Q(is_superuser=False) & Q(email__icontains=emailData))
-		data = serializers.serialize('json', user)
+		data = serializers.serialize('json', user,fields=('email','nameUser','surnameUser','role'))
 		return HttpResponse(data, content_type='application/json')
 	else:
 		raise Http404
