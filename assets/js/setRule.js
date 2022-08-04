@@ -1,3 +1,5 @@
+const inputEmail = document.querySelector(".input-user-email");
+
 const getUserOption = (nameRadio) => {
 	let name = nameRadio;
 	const ruleList = {
@@ -49,16 +51,23 @@ const getUsersByEmail = (userEmail) => {
 	let options = {
 		method: "POST",
 		headers: {
-			'Content-Type': 'application/json',
+			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(params),
 	};
 	fetch("/user/getUsersList/", options)
 		.then((response) => response.json())
 		.then((data) => {
+			// Code of data which
 			console.log(data);
 		});
 };
 
+function inputHandler(e) {
+	if (e.key == "Enter" || inputEmail.value.length > 4) {
+		getUsersByEmail(inputEmail.value);
+	}
+}
+
 setClick();
-getUsersByEmail('user@test.com');
+inputEmail.addEventListener("keyup", (e) => inputHandler(e));
