@@ -1,4 +1,3 @@
-import email
 from django.shortcuts import render, redirect
 from .models import User
 from .forms import UserCreationForm
@@ -7,7 +6,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from SwimmingPoolDjangoConcept.decorators import administrator_required
-from django.core.serializers.json import DjangoJSONEncoder
+from django.views.decorators.csrf import csrf_exempt
+from django.core import serializers
+from django.db.models import Q
 import json
 
 def createUser(request):
@@ -45,10 +46,14 @@ def setRule(request):
 	return render(request, 'rule.html', context)
 
 # @administrator_required
+@csrf_exempt
 def getUsersList(request):
-	if request.is_ajax():
-		user = User.objects.filter().all()
-		data = json.dumps(list(user), cls=DjangoJSONEncoder)
+	if request.method == "POST":
+		body_unicode = request.body.decode('utf-8')
+		body = json.loads(body_unicode)
+		emailData = body['email']
+		user = User.objects.all().filter(Q(is_superuser=False) & Q(email__icontains=emailData))
+		data = serializers.serialize('json', user)
 		return HttpResponse(data, content_type='application/json')
 	else:
 		raise Http404
@@ -57,7 +62,8 @@ def getUsersList(request):
 def getUser(request):
 	if request.is_ajax():
 		user = ""
-		data = json.dumps(list(user), cls=DjangoJSONEncoder)
+		data = ''
+		# data = json.dumps(user, cls=DjangoJSONEncoder)
 		return HttpResponse(data, content_type='application/json')
 	else:
 		raise Http404
