@@ -12,11 +12,11 @@ const getUserOption = (nameRadio) => {
 	const rule = (value, content) => {
 		let label = document.createElement("label");
 		label.classList.add("input-box__label");
-		label.setAttribute("for", content + name);
+		label.setAttribute("for", content.replace(" ", "_") + "_" + name);
 		let input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", name);
-		input.setAttribute("id", content + name);
+		input.setAttribute("id", content.replace(" ", "_") + "_" + name);
 		input.setAttribute("value", value);
 		label.append(input, content);
 		return label;
@@ -37,9 +37,28 @@ const setClick = () => {
 			let box = item.parentElement;
 			let nameRadio = item.getAttribute("data-name");
 			box.innerHTML = "";
-			box.append(item,getUserOption(nameRadio));
+			box.append(item, getUserOption(nameRadio));
 		});
 	});
 };
 
+const getUsersByEmail = (userEmail) => {
+	const params = {
+		email: userEmail,
+	};
+	let options = {
+		method: "POST",
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(params),
+	};
+	fetch("/user/getUsersList/", options)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+		});
+};
+
 setClick();
+getUsersByEmail('user@test.com');
