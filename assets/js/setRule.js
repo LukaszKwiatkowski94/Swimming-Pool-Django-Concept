@@ -32,15 +32,27 @@ const getUserOption = (nameRadio) => {
 	return optionsList;
 };
 
-const setClick = () => {
-	const users = document.querySelectorAll(".users__name");
-	users.forEach((item) => {
-		item.addEventListener("click", () => {
-			let box = item.parentElement;
-			let nameRadio = item.getAttribute("data-name");
-			box.innerHTML = "";
-			box.append(item, getUserOption(nameRadio));
-		});
+const setClick = (item) => {
+	let box = item.parentElement;
+	let nameRadio = item.getAttribute("data-name");
+	box.innerHTML = "";
+	box.append(item, getUserOption(nameRadio));
+};
+
+const createUsersHeader = (data) => {
+	let itemsOfUsers = document.querySelector(".set-rule__users");
+	data.forEach((user) => {
+		let itemU = document.createElement("div");
+		itemU.classList.add("users__item");
+		let nameU = document.createElement("div");
+		nameU.classList.add("users__name");
+		nameU.setAttribute("data-name", user.fields.email);
+		let p = document.createElement("p");
+		p.textContent = `${user.fields.email} - ${user.fields.nameUser} ${user.fields.surnameUser}`;
+		nameU.append(p);
+		nameU.addEventListener("click", (nameU) => setClick(nameU.target));
+		itemU.append(nameU);
+		itemsOfUsers.append(itemU);
 	});
 };
 
@@ -58,8 +70,7 @@ const getUsersByEmail = (userEmail) => {
 	fetch("/user/getUsersList/", options)
 		.then((response) => response.json())
 		.then((data) => {
-			// Code of data which
-			console.log(data);
+			createUsersHeader(data);
 		});
 };
 
@@ -69,5 +80,4 @@ function inputHandler(e) {
 	}
 }
 
-setClick();
 inputEmail.addEventListener("keyup", (e) => inputHandler(e));

@@ -113,17 +113,20 @@ input {
 	}
 }
 
-.users{
+.users {
 	width: 100%;
 
-	&__name{
+	&__name {
 		padding: 0.5em;
 		border: 2px dashed $main-color;
 		margin-bottom: 0;
 		cursor: pointer;
+		p {
+			pointer-events: none;
+		}
 	}
 
-	&__option{
+	&__option {
 		display: flex;
 		flex-direction: column;
 	}
