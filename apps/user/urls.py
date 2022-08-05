@@ -10,5 +10,6 @@ urlpatterns = [
     path('setRole/', views.setRole), # set rule for user
     path('setRoleForUser/', views.setRoleForUser), # JS Request set rule for user
     path('getUsersList/', views.getUsersList), # JS Request for get users List
-    path('getUser/', views.getUser) # JS Request for get user
+    # path('getUser/', views.getUser) # JS Request for get user
+    path('dashboard/', views.dashboard) # JS Request for get user
 ]

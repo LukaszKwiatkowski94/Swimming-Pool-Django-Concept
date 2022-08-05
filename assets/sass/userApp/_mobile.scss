@@ -153,3 +153,39 @@ input {
 		display: none;
 	}
 }
+
+.dashboard {
+	margin-top: calc(60px + 3em);
+
+	.section-header{
+		margin-bottom: 0;
+	}
+
+	&__user{
+		margin-bottom: 1em;
+		font-size: 2.2rem;
+		text-align: center;
+	}
+
+	&__item{
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	&__link{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 12rem;
+		padding: 1em;
+		box-shadow: 0 0 5px $main-color;
+		border-radius: 1em;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: 1.6rem;
+		font-weight: bold;
+		color: $main-color;
+	}
+}
