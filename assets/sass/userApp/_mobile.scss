@@ -157,6 +157,16 @@ input {
 .dashboard {
 	margin-top: calc(60px + 3em);
 
+	.section-header{
+		margin-bottom: 0;
+	}
+
+	&__user{
+		margin-bottom: 1em;
+		font-size: 2.2rem;
+		text-align: center;
+	}
+
 	&__item{
 		display: flex;
 		justify-content: flex-start;

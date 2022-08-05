@@ -42,11 +42,12 @@ def signinPage(request):
 		context = {}
 		return render(request, 'signin.html', context)
 
+@login_required(login_url='/user/signin')
 def dashboard(request):
 	context = {
 		"name" : request.user.nameUser,
 		"surname" : request.user.surnameUser,
-		"r" : request.user.get_role_display()
+		"role" : request.user.get_role_display()
 	}
 	return render(request, 'dashboard.html', context)
 
