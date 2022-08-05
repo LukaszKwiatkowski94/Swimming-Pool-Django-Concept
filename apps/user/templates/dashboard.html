@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Dashboard User{%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/user.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+	<section class="section dashboard">
+		<div class="wrapper">
+			<div class="dashboard__box">
+
+                <div class="dashboard__item">
+                    <a href="/user/setRole/" class="dashboard__link">
+                        <img src="{% static 'icon/user-plus.svg' %}" alt="icon user with plus">
+                        <p>Set role for user</p>
+                    </a>
+                </div>
+
+			</div>
+		</div>
+	</section>
+</main>
+{% endblock%} 

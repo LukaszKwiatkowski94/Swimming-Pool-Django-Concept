@@ -43,7 +43,11 @@ def signinPage(request):
 		return render(request, 'signin.html', context)
 
 def dashboard(request):
-	context = {}
+	context = {
+		"name" : request.user.nameUser,
+		"surname" : request.user.surnameUser,
+		"r" : request.user.get_role_display()
+	}
 	return render(request, 'dashboard.html', context)
 
 @administrator_required

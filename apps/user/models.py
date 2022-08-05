@@ -8,13 +8,13 @@ class User(AbstractUser):
     first_name = None
     last_name = None
     ROLE_CHOICES = (
-        (1, 'Client'),
-        (2, 'Administrator'),
-        (3, 'Cashier'),
-        (4, 'Customer service'),
-        (5, 'Accountant'),
-        (6, 'Press spokesman'),
-        (7, 'Management'),
+        ('1', 'Client'),
+        ('2', 'Administrator'),
+        ('3', 'Cashier'),
+        ('4', 'Customer service'),
+        ('5', 'Accountant'),
+        ('6', 'Press spokesman'),
+        ('7', 'Management'),
     )
     nameUser = models.CharField(max_length=30, verbose_name="nameUser")
     surnameUser = models.CharField(max_length=50, verbose_name="surnameUser")
@@ -31,7 +31,4 @@ class User(AbstractUser):
 
     def setRole(self,newRole):
         self.role=newRole
-
-    def get_role(self):
-        return self.role
 
