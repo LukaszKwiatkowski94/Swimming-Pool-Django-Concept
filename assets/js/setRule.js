@@ -1,6 +1,45 @@
 const inputEmail = document.querySelector(".input-user-email");
 
-const getUserOption = (nameRadio) => {
+const showMessage = (message) => {
+	let m = document.querySelector(".message-output");
+	m.textContent = message;
+	m.classList.toggle("message-hide");
+	setTimeout(() => {
+		m.classList.toggle("message-hide");
+	}, 3000);
+};
+
+const setUserRole = (option) => {
+	let changeRole = confirm(
+		`Do you want to change roles for ${option.getAttribute(
+			"name"
+		)} on ${option.getAttribute("value")}?`
+	);
+	if (changeRole) {
+		const params = {
+			email: option.getAttribute("name"),
+			newRole: option.getAttribute("value"),
+		};
+		let options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
+		fetch("/user/setRoleForUser/", options)
+			.then((response) => response.json())
+			.then((message) => {
+				showMessage(message);
+			});
+	} else {
+		option
+			.closest(".users__option")
+			.previousSibling.dispatchEvent(new Event("click"));
+	}
+};
+
+const getUserOption = (nameRadio, roleValue) => {
 	let name = nameRadio;
 	const ruleList = {
 		1: "Client",
@@ -19,7 +58,11 @@ const getUserOption = (nameRadio) => {
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", name);
 		input.setAttribute("id", content.replace(" ", "_") + "_" + name);
+		input.addEventListener("click", () => setUserRole(input));
 		input.setAttribute("value", value);
+		if (value === roleValue) {
+			input.checked = true;
+		}
 		label.append(input, content);
 		return label;
 	};
@@ -32,16 +75,37 @@ const getUserOption = (nameRadio) => {
 	return optionsList;
 };
 
-const setClick = () => {
-	const users = document.querySelectorAll(".users__name");
-	users.forEach((item) => {
-		item.addEventListener("click", () => {
-			let box = item.parentElement;
-			let nameRadio = item.getAttribute("data-name");
-			box.innerHTML = "";
-			box.append(item, getUserOption(nameRadio));
+const setClick = (item, roleValue) => {
+	let box = item.parentElement;
+	let nameRadio = item.getAttribute("data-name");
+	box.innerHTML = "";
+	box.append(item, getUserOption(nameRadio, roleValue));
+};
+
+const createUsersHeader = (data) => {
+	let itemsOfUsers = document.querySelector(".set-rule__users");
+	itemsOfUsers.innerHTML = "";
+	if (data.length === 0) {
+		let p = document.createElement("p");
+		p.textContent = "No user found with the given e-mail address.";
+		itemsOfUsers.append(p);
+	} else {
+		data.forEach((user) => {
+			let itemU = document.createElement("div");
+			itemU.classList.add("users__item");
+			let nameU = document.createElement("div");
+			nameU.classList.add("users__name");
+			nameU.setAttribute("data-name", user.fields.email);
+			let p = document.createElement("p");
+			p.textContent = `${user.fields.email} - ${user.fields.nameUser} ${user.fields.surnameUser}`;
+			nameU.append(p);
+			nameU.addEventListener("click", (nameU) =>
+				setClick(nameU.target, user.fields.role)
+			);
+			itemU.append(nameU);
+			itemsOfUsers.append(itemU);
 		});
-	});
+	}
 };
 
 const getUsersByEmail = (userEmail) => {
@@ -58,8 +122,7 @@ const getUsersByEmail = (userEmail) => {
 	fetch("/user/getUsersList/", options)
 		.then((response) => response.json())
 		.then((data) => {
-			// Code of data which
-			console.log(data);
+			createUsersHeader(data);
 		});
 };
 
@@ -69,5 +132,4 @@ function inputHandler(e) {
 	}
 }
 
-setClick();
 inputEmail.addEventListener("keyup", (e) => inputHandler(e));

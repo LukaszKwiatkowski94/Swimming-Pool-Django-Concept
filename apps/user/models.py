@@ -26,3 +26,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
+    def setRole(self,newRole):
+        self.role=newRole
+

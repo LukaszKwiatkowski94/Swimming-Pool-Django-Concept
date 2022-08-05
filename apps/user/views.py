@@ -9,6 +9,7 @@ from django.http import Http404, HttpResponse
 from SwimmingPoolDjangoConcept.decorators import administrator_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import Q
 import json
 
@@ -42,9 +43,28 @@ def signinPage(request):
 		return render(request, 'signin.html', context)
 
 # @administrator_required
-def setRule(request):
+def setRole(request):
 	context = {}
 	return render(request, 'rule.html', context)
+
+# @administrator_required
+@csrf_exempt
+def setRoleForUser(request):
+	if request.method == "POST":
+		body_unicode = request.body.decode('utf-8')
+		body = json.loads(body_unicode)
+		emailData = body['email']
+		roleData = body['newRole']
+		try:
+			user = User.objects.get(email=emailData)
+			user.setRole(roleData)
+			user.save()
+			data = json.dumps("The user's role has been changed", cls=DjangoJSONEncoder)
+		except:
+			data = json.dumps("An internal server error has occurred.", cls=DjangoJSONEncoder)
+		return HttpResponse(data, content_type='application/json')
+	else:
+		raise Http404
 
 # @administrator_required
 @csrf_exempt
