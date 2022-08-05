@@ -29,3 +29,6 @@ class User(AbstractUser):
     def setRole(self,newRole):
         self.role=newRole
 
+    def get_role(self):
+        return self.role
+
