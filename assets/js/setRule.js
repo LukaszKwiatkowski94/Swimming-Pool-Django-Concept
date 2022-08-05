@@ -1,7 +1,34 @@
 const inputEmail = document.querySelector(".input-user-email");
 
-const setUserRule = (option) => {
-	console.log(option)
+const setUserRole = (option) => {
+	let changeRole = confirm(
+		`Do you want to change roles for ${option.getAttribute(
+			"name"
+		)} on ${option.getAttribute("value")}?`
+	);
+	if (changeRole) {
+		const params = {
+			email: option.getAttribute("name"),
+			newRole: option.getAttribute("value"),
+		};
+		let options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(params),
+		};
+		fetch("/user/setRoleForUser/", options)
+			.then((response) => response.json())
+			.then((message) => {
+				// code
+				console.log(message);
+			});
+	} else {
+		option
+			.closest(".users__option")
+			.previousSibling.dispatchEvent(new Event("click"));
+	}
 };
 
 const getUserOption = (nameRadio, roleValue) => {
@@ -23,9 +50,9 @@ const getUserOption = (nameRadio, roleValue) => {
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", name);
 		input.setAttribute("id", content.replace(" ", "_") + "_" + name);
-		input.addEventListener("click", () => setUserRule(input));
+		input.addEventListener("click", () => setUserRole(input));
 		input.setAttribute("value", value);
-		if(value===roleValue){
+		if (value === roleValue) {
 			input.checked = true;
 		}
 		label.append(input, content);
@@ -40,11 +67,11 @@ const getUserOption = (nameRadio, roleValue) => {
 	return optionsList;
 };
 
-const setClick = (item,roleValue) => {
+const setClick = (item, roleValue) => {
 	let box = item.parentElement;
 	let nameRadio = item.getAttribute("data-name");
 	box.innerHTML = "";
-	box.append(item, getUserOption(nameRadio,roleValue));
+	box.append(item, getUserOption(nameRadio, roleValue));
 };
 
 const createUsersHeader = (data) => {
@@ -64,7 +91,9 @@ const createUsersHeader = (data) => {
 			let p = document.createElement("p");
 			p.textContent = `${user.fields.email} - ${user.fields.nameUser} ${user.fields.surnameUser}`;
 			nameU.append(p);
-			nameU.addEventListener("click", (nameU) => setClick(nameU.target,user.fields.role));
+			nameU.addEventListener("click", (nameU) =>
+				setClick(nameU.target, user.fields.role)
+			);
 			itemU.append(nameU);
 			itemsOfUsers.append(itemU);
 		});
