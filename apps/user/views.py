@@ -55,11 +55,13 @@ def setRoleForUser(request):
 		body = json.loads(body_unicode)
 		emailData = body['email']
 		roleData = body['newRole']
-		# try
-		user = User.objects.get(email=emailData)
-		user.setRole(roleData)
-		user.save()
-		data = json.dumps("The user's role has been changed", cls=DjangoJSONEncoder)
+		try:
+			user = User.objects.get(email=emailData)
+			user.setRole(roleData)
+			user.save()
+			data = json.dumps("The user's role has been changed", cls=DjangoJSONEncoder)
+		except:
+			data = json.dumps("An internal server error has occurred.", cls=DjangoJSONEncoder)
 		return HttpResponse(data, content_type='application/json')
 	else:
 		raise Http404
