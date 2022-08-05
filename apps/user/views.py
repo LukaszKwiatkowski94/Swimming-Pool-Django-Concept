@@ -42,12 +42,12 @@ def signinPage(request):
 		context = {}
 		return render(request, 'signin.html', context)
 
-# @administrator_required
+@administrator_required
 def setRole(request):
 	context = {}
 	return render(request, 'rule.html', context)
 
-# @administrator_required
+@administrator_required
 @csrf_exempt
 def setRoleForUser(request):
 	if request.method == "POST":
@@ -66,7 +66,7 @@ def setRoleForUser(request):
 	else:
 		raise Http404
 
-# @administrator_required
+@administrator_required
 @csrf_exempt
 def getUsersList(request):
 	if request.method == "POST":
