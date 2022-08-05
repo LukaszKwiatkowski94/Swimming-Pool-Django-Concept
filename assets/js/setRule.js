@@ -1,6 +1,10 @@
 const inputEmail = document.querySelector(".input-user-email");
 
-const getUserOption = (nameRadio) => {
+const setUserRule = (option) => {
+	console.log(option)
+};
+
+const getUserOption = (nameRadio, roleValue) => {
 	let name = nameRadio;
 	const ruleList = {
 		1: "Client",
@@ -19,7 +23,11 @@ const getUserOption = (nameRadio) => {
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", name);
 		input.setAttribute("id", content.replace(" ", "_") + "_" + name);
+		input.addEventListener("click", () => setUserRule(input));
 		input.setAttribute("value", value);
+		if(value===roleValue){
+			input.checked = true;
+		}
 		label.append(input, content);
 		return label;
 	};
@@ -32,28 +40,35 @@ const getUserOption = (nameRadio) => {
 	return optionsList;
 };
 
-const setClick = (item) => {
+const setClick = (item,roleValue) => {
 	let box = item.parentElement;
 	let nameRadio = item.getAttribute("data-name");
 	box.innerHTML = "";
-	box.append(item, getUserOption(nameRadio));
+	box.append(item, getUserOption(nameRadio,roleValue));
 };
 
 const createUsersHeader = (data) => {
 	let itemsOfUsers = document.querySelector(".set-rule__users");
-	data.forEach((user) => {
-		let itemU = document.createElement("div");
-		itemU.classList.add("users__item");
-		let nameU = document.createElement("div");
-		nameU.classList.add("users__name");
-		nameU.setAttribute("data-name", user.fields.email);
+	itemsOfUsers.innerHTML = "";
+	if (data.length === 0) {
 		let p = document.createElement("p");
-		p.textContent = `${user.fields.email} - ${user.fields.nameUser} ${user.fields.surnameUser}`;
-		nameU.append(p);
-		nameU.addEventListener("click", (nameU) => setClick(nameU.target));
-		itemU.append(nameU);
-		itemsOfUsers.append(itemU);
-	});
+		p.textContent = "No user found with the given e-mail address.";
+		itemsOfUsers.append(p);
+	} else {
+		data.forEach((user) => {
+			let itemU = document.createElement("div");
+			itemU.classList.add("users__item");
+			let nameU = document.createElement("div");
+			nameU.classList.add("users__name");
+			nameU.setAttribute("data-name", user.fields.email);
+			let p = document.createElement("p");
+			p.textContent = `${user.fields.email} - ${user.fields.nameUser} ${user.fields.surnameUser}`;
+			nameU.append(p);
+			nameU.addEventListener("click", (nameU) => setClick(nameU.target,user.fields.role));
+			itemU.append(nameU);
+			itemsOfUsers.append(itemU);
+		});
+	}
 };
 
 const getUsersByEmail = (userEmail) => {
