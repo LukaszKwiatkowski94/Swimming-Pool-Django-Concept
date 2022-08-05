@@ -1,5 +1,14 @@
 const inputEmail = document.querySelector(".input-user-email");
 
+const showMessage = (message) => {
+	let m = document.querySelector(".message-output");
+	m.textContent = message;
+	m.classList.toggle("message-hide");
+	setTimeout(() => {
+		m.classList.toggle("message-hide");
+	}, 3000);
+};
+
 const setUserRole = (option) => {
 	let changeRole = confirm(
 		`Do you want to change roles for ${option.getAttribute(
@@ -21,8 +30,7 @@ const setUserRole = (option) => {
 		fetch("/user/setRoleForUser/", options)
 			.then((response) => response.json())
 			.then((message) => {
-				// code
-				console.log(message);
+				showMessage(message);
 			});
 	} else {
 		option

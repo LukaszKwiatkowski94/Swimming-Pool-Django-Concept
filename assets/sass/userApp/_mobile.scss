@@ -131,3 +131,25 @@ input {
 		flex-direction: column;
 	}
 }
+
+.message {
+	&-output {
+		position: fixed;
+		top: calc(60px + 2em);
+		margin: 0 10%;
+		left: 0;
+		right: 0;
+		padding: 1.2em 2.5em;
+		border-radius: 1em;
+		border: none;
+		background-color: $main-color;
+		font-size: 2.6rem;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		text-align: center;
+		color: $winter-color;
+	}
+	&-hide {
+		display: none;
+	}
+}
