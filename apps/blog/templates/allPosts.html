@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Blog | All Posts{%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/blog.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section all-posts">
+        <h2 class="section-header">All Posts</h2>
+        <div class="wrapper">
+            <div class="all-posts__box">
+                <div class="all-posts__header">
+                    <div class="all-posts__id">id</div>
+                    <div class="all-posts__title">title</div>
+                    <div class="all-posts__created">created</div>
+                    <div class="all-posts__published">Published</div>
+                    <div class="all-posts__actions">Actions</div>
+                </div>
+            {% for item in posts %}
+                <div class="all-posts__item">
+                    <div class="all-posts__id">{{item.id}}</div>
+                    <div class="all-posts__title">{{item.title}}</div>
+                    <div class="all-posts__created">{{item.created}}</div>
+                    <div class="all-posts__published">{{item.published}}</div>
+                    <div class="all-posts__actions">
+                        <!-- actions -->
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock%}

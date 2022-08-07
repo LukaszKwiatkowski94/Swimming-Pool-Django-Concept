@@ -92,4 +92,4 @@ def getAllPosts(request):
         }
     except BlogPosts.DoesNotExist:
         raise Http404("BlogPosts does not exist")
-    return render(request, 'allPost.html', context)          
+    return render(request, 'allPosts.html', context)          
