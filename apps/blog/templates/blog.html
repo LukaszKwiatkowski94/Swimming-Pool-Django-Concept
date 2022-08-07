@@ -9,7 +9,7 @@
             <div class="blog__box">
             {% for item in posts %}
                 <div class="blog__post">
-                    <img src="{{item.photo}}" alt="" class="blog__img">
+                    <img src="{{item.photo}}" alt="{{post.photoAlt}}" class="blog__img">
                     <h3 class="blog__title">{{item.title}}</h3>
                     <p class="blog__short-text">{{item.shortText}}</p>
                 </div>
