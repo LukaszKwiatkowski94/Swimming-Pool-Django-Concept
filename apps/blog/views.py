@@ -3,7 +3,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render , redirect
 from django.core.serializers.json import DjangoJSONEncoder
 from .models import BlogPosts
-from .forms import FormBlogPosts
+from .forms import PostCreationForm
 
 PAGE_POSTS = 5
 
@@ -41,7 +41,7 @@ def showPost(request,idPost):
 
 def create(request):
     try:
-        form = FormBlogPosts(request.POST or None)
+        form = PostCreationForm(request.POST or None)
         context = {
             'form':form,
             'name':"create"
@@ -56,7 +56,7 @@ def create(request):
 def update(request,idPost):
     try:
         post = BlogPosts.objects.get(id=idPost)
-        form = FormBlogPosts(request.POST or None,instance=post)
+        form = PostCreationForm(request.POST or None,instance=post)
         context = {
             'form':form,
             'name':"update"
