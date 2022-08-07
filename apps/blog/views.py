@@ -47,6 +47,7 @@ def create(request):
             'name':"create"
         }
         if form.is_valid():
+            form.author=request.user.id
             form.save()
             return redirect('/blog/')
         return render(request, 'create-update.html',context)
