@@ -1,9 +1,9 @@
-import json
 from django.http import Http404, HttpResponse
 from django.shortcuts import render , redirect
 from django.core.serializers.json import DjangoJSONEncoder
 from .models import BlogPosts
 from .forms import PostCreationForm
+import json
 
 PAGE_POSTS = 5
 

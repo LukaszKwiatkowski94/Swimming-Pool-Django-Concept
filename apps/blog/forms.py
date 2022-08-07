@@ -1,7 +1,7 @@
 from django import forms
 from .models import BlogPosts
 
-class PostCreationForm(UserCreationForm):
+class PostCreationForm(forms.Form):
     class Meta:
         model = BlogPosts
         fields = ('title','shortText','text','photo','published')
