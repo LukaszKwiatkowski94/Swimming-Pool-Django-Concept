@@ -10,6 +10,7 @@ class BlogPosts(models.Model):
     created = models.DateTimeField(default=datetime.now,verbose_name="Created")
     liked = models.IntegerField(default=0,verbose_name="Liked")
     photo = models.FileField(upload_to='blogPhoto/', verbose_name="Photo")
+    photoAlt = models.CharField(max_length=100,verbose_name="Photo Alt")
     published = models.BooleanField(default=False,verbose_name="Published")
 
     def giveLike(self):
