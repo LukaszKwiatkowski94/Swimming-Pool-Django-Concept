@@ -12,3 +12,6 @@ class BlogPosts(models.Model):
     photo = models.FileField(upload_to='blogPhoto/', verbose_name="Photo")
     published = models.BooleanField(default=False,verbose_name="Published")
 
+    def giveLike(self):
+        self.liked += 1
+
