@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Blog - {{name}} post{%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/blog.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section create-update">
+        <h2 class="section-header">{{name}} post</h2>
+        <div class="wrapper">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="create-update__box">
+                    <div class="create-update__title input-box">
+                        <label for="{{form.title_for_label}}" class="create-update__label">{{ form.title.label }}</label>
+                        {{form.title}}
+                    </div>
+                    <div class="create-update__shortText input-box">
+                        <label for="{{form.shortText_for_label}}" class="create-update__label">{{form.shortText.label}}</label>
+                        {{form.shortText}}
+                    </div>
+                    <div class="create-update__text input-box">
+                        <label for="{{form.text_for_label}}" class="create-update__label">{{form.text.label}}</label>
+                        {{form.text}}
+                    </div>
+                    <div class="create-update__published input-box">
+                        <label for="{{form.published_for_label}}" class="create-update__label">{{form.published.label}}</label>
+                        {{form.published}}
+                    </div>
+                    <div class="create-update__photo input-box">
+                        <label for="{{form.photo_for_label}}" class="create-update__label">{{form.photo.label}}</label>
+                        {{form.photo}}
+                    </div>
+                    <div class="create-update__photoAlt input-box">
+                        <label for="{{form.photoAlt_for_label}}" class="create-update__label">{{form.photoAlt.label}}</label>
+                        {{form.photoAlt}}
+                    </div>
+                    <div class="create-update__action">
+                        <button type="submit" class="create-update__btn btn">{{name}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock%}

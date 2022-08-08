@@ -1,0 +1,11 @@
+.create-update {
+	margin-top: calc(60px + 3em);
+
+	&__label {
+		font-weight: bold;
+		margin-bottom: 0.2em;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 1.8rem;
+	}
+}

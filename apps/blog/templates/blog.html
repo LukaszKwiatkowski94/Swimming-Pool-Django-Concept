@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Blog{%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/blog.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section blog">
+        <h2 class="setion-header">Blog</h2>
+        <div class="wrapper">
+            <div class="blog__box">
+            {% for item in posts %}
+                <div class="blog__post">
+                    <img src="{{item.photo}}" alt="{{post.photoAlt}}" class="blog__img">
+                    <h3 class="blog__title">{{item.title}}</h3>
+                    <p class="blog__short-text">{{item.shortText}}</p>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock%}
