@@ -1,10 +1,10 @@
-from django import forms
+from django.forms import ModelForm
 from .models import BlogPosts
 
-class PostCreationForm(forms.Form):
+class PostCreationForm(ModelForm):
     class Meta:
         model = BlogPosts
-        fields = ('title','shortText','text','photo','published')
+        fields = ('title','shortText','text','photo','photoAlt','published')
         labels = {
             "title":"Post title:",
             "shortText":"Short Text (max 300 characters):",
