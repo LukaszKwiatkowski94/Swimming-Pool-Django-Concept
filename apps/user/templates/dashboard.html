@@ -17,6 +17,25 @@
                 </div>
 
 			</div>
+
+            <div class="dashboard__box">
+
+                <div class="dashboard__item">
+                    <a href="{% url 'create-blog-post' %}" class="dashboard__link">
+                        <img src="{% static 'icon/file-plus.svg' %}" alt="icon file with plus">
+                        <p>Create post</p>
+                    </a>
+                </div>
+                
+                <div class="dashboard__item">
+                    <a href="{% url 'all-blog-post' %}" class="dashboard__link">
+                        <img src="{% static 'icon/list.svg' %}" alt="icon user with plus">
+                        <p>Display post list</p>
+                    </a>
+                </div>
+
+			</div>
+
 		</div>
 	</section>
 </main>

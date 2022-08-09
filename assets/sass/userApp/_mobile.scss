@@ -170,6 +170,7 @@ input {
 	&__item{
 		display: flex;
 		justify-content: flex-start;
+		margin: 1em;
 	}
 
 	&__link{
@@ -187,5 +188,10 @@ input {
 		font-size: 1.6rem;
 		font-weight: bold;
 		color: $main-color;
+	}
+
+	&__box{
+		display: flex;
+		flex-wrap: wrap;
 	}
 }
