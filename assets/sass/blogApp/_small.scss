@@ -1,2 +1,10 @@
 @media (min-width: 576px) {
+    .create-update {
+        &__published{
+            flex-direction: row;
+            input{
+                width: auto;
+            }
+        }
+    }
 }
