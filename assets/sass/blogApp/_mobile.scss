@@ -74,3 +74,11 @@ input[type="checkbox"] {
 		font-size: 1.8rem;
 	}
 }
+
+.all-posts{
+	margin-top: calc(60px + 3em);
+	&__box{
+		display: flex;
+		flex-direction: column;
+	}
+}
