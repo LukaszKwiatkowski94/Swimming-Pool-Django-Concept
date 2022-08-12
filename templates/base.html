@@ -19,7 +19,7 @@
 				<div class="nav__list">
 					<a href="/" class="nav__item">Home</a>
 					<a href="#" class="nav__item">Offer</a>
-					<a href="#" class="nav__item">Blog</a>
+					<a href="{% url 'blog' %}" class="nav__item">Blog</a>
 					<a href="#" class="nav__item">Contact</a>
 					{% if user.is_authenticated %}
 						<a href="{% url 'dashboard' %}" class="nav__item">Dashboard</a>
