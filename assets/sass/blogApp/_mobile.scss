@@ -106,6 +106,11 @@ input[type="checkbox"] {
 		a {
 			color: $main-color;
 			text-decoration: none;
+			transition: color .5s;
+		}
+
+		a:hover{
+			color: $second-color;
 		}
 	}
 
@@ -151,5 +156,55 @@ input[type="checkbox"] {
 			background-color: $orange-color;
 			color: $main-color;
 		}
+	}
+}
+
+.post{
+	margin-top: calc(60px + 3em);
+	text-align: center;
+	&__box{
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: auto;
+	}
+
+	&__header{
+		grid-column: 1/-1;
+		grid-row: 1/2;
+		font-size: 2.4rem;
+	}
+
+	&__hr{
+		grid-column: 1/-1;
+		grid-row: 2/3;
+	}
+
+	&__created{
+		grid-column: 1/3;
+		grid-row: 3/4;
+	}
+
+	&__like{
+		grid-column: 3/5;
+		grid-row: 3/4;
+	}
+
+	&__img{
+		grid-column: 1/-1;
+		grid-row: 4/5;
+		width: 100%;
+		margin: 1em auto;
+	}
+
+	&__full-text{
+		grid-column: 1/-1;
+		grid-row: 5/6;
+		text-align: justify;
+		font-size: 1.8rem;
+		line-height: 2.5rem;
+	}
+
+	&__created, &__like{
+		font-size: 1.6rem;
 	}
 }
