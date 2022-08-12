@@ -41,15 +41,23 @@ def showPost(request,idPost):
 
 def create(request):
     try:
-        form = PostCreationForm(request.POST or None)
-        context = {
-            'form':form,
-            'name':"create"
-        }
-        if form.is_valid():
-            # form.author=request.user
-            form.save()
-            return redirect('/blog/')
+        form = None
+        if request.POST:
+            form = PostCreationForm(request.POST or None, request.FILES)
+            print(request.POST)
+            print("###################")
+            print(form.errors.as_data())
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.author = request.user
+                obj.save()
+                return redirect('/blog')
+        if form is None:
+            form = PostCreationForm()
+            context = {
+                'form':form,
+                'name':"create"
+            }
         return render(request, 'create-update.html',context)
     except:
         raise Http404("Createation Post does not exist")

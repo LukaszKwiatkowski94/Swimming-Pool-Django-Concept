@@ -1,6 +1,7 @@
 from django.db import models
 from apps.user.models import User
 from datetime import datetime
+from django.conf import settings
 
 class BlogPosts(models.Model):
     title = models.CharField(max_length=150,verbose_name="Title")

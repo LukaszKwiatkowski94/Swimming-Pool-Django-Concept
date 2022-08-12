@@ -6,7 +6,7 @@
     <section class="section create-update">
         <h2 class="section-header">{{name}} post</h2>
         <div class="wrapper">
-            <form method="POST">
+            <form  action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="create-update__box">
                     <div class="create-update__title input-box">
