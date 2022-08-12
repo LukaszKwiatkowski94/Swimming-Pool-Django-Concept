@@ -20,4 +20,16 @@
             grid-row: 5/6;
         }
     }
+
+    .blog{
+        &__title{
+            margin: 0.8em auto;
+            font-size: 2.6rem;
+        }
+
+        &__short-text{
+            font-size: 2rem;
+            padding: 0.8em;
+        }
+    }
 }

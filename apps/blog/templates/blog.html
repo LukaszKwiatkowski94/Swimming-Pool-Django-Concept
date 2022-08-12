@@ -4,14 +4,14 @@
 {% block content %}
 <main>
     <section class="section blog">
-        <h2 class="setion-header">Blog</h2>
+        <h2 class="section-header">Blog</h2>
         <div class="wrapper">
             <div class="blog__box">
             {% for item in posts %}
                 <div class="blog__post">
-                    <img src="{{item.photo}}" alt="{{post.photoAlt}}" class="blog__img">
-                    <h3 class="blog__title">{{item.title}}</h3>
-                    <p class="blog__short-text">{{item.shortText}}</p>
+                    <img src="{{item.photo.url}}" alt="{{post.photoAlt}}" class="blog__img"/>
+                    <h3 class="blog__title">{{item.title|linebreaksbr}}</h3>
+                    <p class="blog__short-text">{{item.shortText|linebreaksbr}}</p>
                 </div>
             {% endfor %}
             </div>

@@ -17,5 +17,9 @@ class BlogPosts(models.Model):
         self.liked += 1
 
     def shortText(self):
-        return self.text[:300]
+        shortTextValue = 300
+        if len(self.text) <= shortTextValue:
+            return self.text[:shortTextValue]
+        else:
+            return self.text[:shortTextValue-3]+'...'
 

@@ -9,16 +9,16 @@
 
 input,
 textarea {
-	font-size: 2.2rem;
-	width: 100%;
 	margin: 0.5em 1em;
 	padding: 0.5em;
+	width: 100%;
 	border-radius: 1em;
+	font-size: 2.2rem;
 }
 
 input[type="checkbox"] {
-	transform: scale(2);
 	width: auto;
+	transform: scale(2);
 }
 
 .create-update {
@@ -75,10 +75,55 @@ input[type="checkbox"] {
 	}
 }
 
-.all-posts{
+.all-posts {
 	margin-top: calc(60px + 3em);
-	&__box{
+	&__box {
 		display: flex;
 		flex-direction: column;
+	}
+}
+
+.blog {
+	margin-top: calc(60px + 3em);
+	&__box {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__space{
+		min-height: 2em;
+	}
+
+	&__post {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+		border-radius: 1em;
+		overflow: hidden;
+		margin: 2em auto;
+	}
+
+	&__img {
+		width: 100%;
+		object-fit: cover;
+	}
+
+	&__title {
+		margin: 1em auto;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 2.2rem;
+		letter-spacing: 0.2em;
+	}
+
+	&__short-text {
+		font-size: 1.8rem;
+		text-align: justify;
+	}
+
+	&__title, &__short-text{
+		padding: 0.5em;
 	}
 }
