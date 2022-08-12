@@ -4,16 +4,25 @@
 {% block content %}
 <main>
     <section class="section blog">
-        <h2 class="setion-header">Blog</h2>
+        <h2 class="section-header">Blog</h2>
         <div class="wrapper">
             <div class="blog__box">
             {% for item in posts %}
                 <div class="blog__post">
-                    <img src="{{item.photo}}" alt="{{post.photoAlt}}" class="blog__img">
-                    <h3 class="blog__title">{{item.title}}</h3>
-                    <p class="blog__short-text">{{item.shortText}}</p>
+                    <img src="{{item.photo.url}}" alt="{{post.photoAlt}}" class="blog__img"/>
+                    <h3 class="blog__title"><a href="{% url 'get-blog-post' item.id %}">{{item.title|linebreaksbr}}</a></h3>
+                    <p class="blog__short-text">{{item.shortText|linebreaksbr}}</p>
                 </div>
             {% endfor %}
+            </div>
+            <div class="blog__pagging">
+                {% if prev != 0 %}
+                <a href="{% url 'blog-page' prev %}"><button class="blog__btn-page">{{prev}}</button></a>
+                {% endif %}
+                <a href="{% url 'blog-page' page %}"><button class="blog__btn-page blog__btn-page--active">{{page}}</button></a>
+                {% if next != page %}
+                <a href="{% url 'blog-page' next %}"><button class="blog__btn-page">{{next}}</button></a>
+                {% endif %}
             </div>
         </div>
     </section>

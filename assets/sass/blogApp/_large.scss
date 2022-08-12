@@ -1,3 +1,35 @@
 @media (min-width: 992px) {
+    .create-update {
+        &__published {
+            grid-column: 1/2;
+            grid-row: 5/6;
+        }
 
+        &__photo {
+            grid-column: 1/2;
+            grid-row: 4/5;
+        }
+    
+        &__photoAlt {
+            grid-column: 2/3;
+            grid-row: 4/5;
+        }
+    
+        &__action {
+            grid-column: 2/3;
+            grid-row: 5/6;
+        }
+    }
+
+    .blog{
+        &__title{
+            margin: 0.8em auto;
+            font-size: 2.6rem;
+        }
+
+        &__short-text{
+            font-size: 2rem;
+            padding: 0.8em;
+        }
+    }
 }

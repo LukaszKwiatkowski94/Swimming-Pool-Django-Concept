@@ -1,5 +1,70 @@
+@use "../utilities/colors" as *;
+
+.input-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+input,
+textarea {
+	margin: 0.5em 1em;
+	padding: 0.5em;
+	width: 100%;
+	border-radius: 1em;
+	font-size: 2.2rem;
+}
+
+input[type="checkbox"] {
+	width: auto;
+	transform: scale(2);
+}
+
 .create-update {
 	margin-top: calc(60px + 3em);
+
+	&__box {
+		display: grid;
+		grid-template-columns: repeat(2, 2fr);
+		grid-auto-rows: auto;
+		row-gap: 1em;
+	}
+
+	&__title {
+		grid-column: 1/-1;
+		grid-row: 1/2;
+	}
+
+	&__shortText {
+		grid-column: 1/-1;
+		grid-row: 2/3;
+	}
+
+	&__text {
+		grid-column: 1/-1;
+		grid-row: 3/4;
+	}
+
+	&__published {
+		grid-column: 1/-1;
+		grid-row: 4/5;
+	}
+
+	&__photo {
+		grid-column: 1/-1;
+		grid-row: 5/6;
+	}
+
+	&__photoAlt {
+		grid-column: 1/-1;
+		grid-row: 6/7;
+	}
+
+	&__action {
+		grid-column: 1/-1;
+		grid-row: 7/8;
+	}
 
 	&__label {
 		font-weight: bold;
@@ -7,5 +72,84 @@
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		font-size: 1.8rem;
+	}
+}
+
+.all-posts {
+	margin-top: calc(60px + 3em);
+	&__box {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.blog {
+	margin-top: calc(60px + 3em);
+	&__box {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__space {
+		min-height: 2em;
+	}
+
+	&__post {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 2em auto;
+		box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+		border-radius: 1em;
+		overflow: hidden;
+		a {
+			color: $main-color;
+			text-decoration: none;
+		}
+	}
+
+	&__img {
+		width: 100%;
+		object-fit: cover;
+	}
+
+	&__title {
+		margin: 1em auto;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 2.2rem;
+		letter-spacing: 0.2em;
+	}
+
+	&__short-text {
+		font-size: 1.8rem;
+		text-align: justify;
+	}
+
+	&__title,
+	&__short-text {
+		padding: 0.5em;
+	}
+
+	&__pagging {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__btn-page {
+		margin: 0.4em;
+		padding: 0.5em 0.8em;
+		background-color: $main-color;
+		color: $winter-color;
+		font-size: 1.8rem;
+		font-weight: bold;
+		border-radius: 0.5em;
+		border: none;
+
+		&--active {
+			background-color: $orange-color;
+			color: $main-color;
+		}
 	}
 }
