@@ -10,20 +10,34 @@ PAGE_POSTS = 5
 def showMainPage(request):
     try:
         posts = BlogPosts.objects.filter(published=True).order_by('-id')[:PAGE_POSTS]
+        if BlogPosts.objects.count() > PAGE_POSTS:
+            next=2
+        else:
+            next=1
         context = {
-            'posts': posts
+            'posts': posts,
+            'prev':0,
+            'page':1,
+            'next':next
         }
     except BlogPosts.DoesNotExist:
         raise Http404("BlogPosts does not exist")
     return render(request, 'blog.html', context)
 
-def showBlogPage(request,nuberPage):
+def showPage(request,nuberPage):
     try:
         start = (nuberPage-1)*PAGE_POSTS
         end = start + PAGE_POSTS
         posts = BlogPosts.objects.filter(published=True).order_by('-id')[start:end]
+        if BlogPosts.objects.count() > nuberPage*PAGE_POSTS:
+            next=nuberPage+1
+        else:
+            next=nuberPage
         context = {
-            'posts': posts
+            'posts': posts,
+            'prev':nuberPage-1,
+            'page':nuberPage,
+            'next':next
         }
     except BlogPosts.DoesNotExist:
         raise Http404("BlogPosts does not exist")
