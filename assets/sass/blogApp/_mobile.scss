@@ -16,11 +16,6 @@ textarea {
 	border-radius: 1em;
 }
 
-input:focus,
-textarea:focus {
-	outline-color: $second-color;
-}
-
 input[type="checkbox"] {
 	transform: scale(2);
 	width: auto;

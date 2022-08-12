@@ -17,3 +17,8 @@
 	color: red;
 	letter-spacing: 2px;
 }
+
+input:focus,
+textarea:focus {
+	outline-color: $second-color;
+}
