@@ -7,10 +7,7 @@
         <h2 class="section-header">All Posts</h2>
         <div class="wrapper">
             <div class="all-posts__box">
-                <div class="all-posts__header--mobile">
-                    <span class="all-posts__header-text">List of all posts</span>
-                </div>
-                <div class="all-posts__header--desktop">
+                <div class="all-posts__header">
                     <div class="all-posts__id">id</div>
                     <div class="all-posts__title">title</div>
                     <div class="all-posts__created">created</div>
@@ -20,8 +17,8 @@
             {% for item in posts %}
                 <div class="all-posts__item">
                     <div class="all-posts__id">{{item.id}}</div>
-                    <div class="all-posts__title">{{item.title}}</div>
-                    <div class="all-posts__created">{{item.created}}</div>
+                    <div class="all-posts__title"><a href="{% url 'get-blog-post' item.id %}" target="_blank">{{item.title}}</a></div>
+                    <div class="all-posts__created">{{item.created|date:"d/m/y H:i"}}</div>
                     <div class="all-posts__published">{{item.published}}</div>
                     <div class="all-posts__actions">
                         <!-- actions -->
