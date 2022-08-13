@@ -3,6 +3,8 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from .models import Passes
 from .forms import PassForm
+from django.core.serializers.json import DjangoJSONEncoder
+import json
 
 def show(request):
     try:
@@ -61,4 +63,20 @@ def showAllListPasses(request):
         }
         return render(request,'showAllListPasses.html',context)
     except:
+        raise Http404("Passes does not exist")
+
+def deactivatePass(request):
+    if request.POST:
+        try:
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
+            idPass = body['idPass']
+            post = Passes.objects.get(id=idPass)
+            post.active != post.active
+            post.save()
+            data = json.dump(post.active, cls=DjangoJSONEncoder)
+        except:
+            data = json.dump('Error', cls=DjangoJSONEncoder)
+        return HttpResponse(data,content_type='application/json')
+    else:
         raise Http404("Passes does not exist")
