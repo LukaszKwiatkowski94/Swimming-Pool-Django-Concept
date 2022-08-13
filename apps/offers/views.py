@@ -1,6 +1,5 @@
-from multiprocessing import context
 from django.http import Http404, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Passes
 from .forms import PassForm
 from django.core.serializers.json import DjangoJSONEncoder
@@ -12,7 +11,7 @@ def show(request):
         context = {
             'passes':passes
         }
-        return render(request,'show.html',context)
+        return render(request,'show-offers.html',context)
     except:
         raise Http404("Get Passes does not exist")
 
@@ -23,35 +22,40 @@ def createPass(request):
             form = PassForm(request.POST)
             if form.is_valid():
                 form.save()
-        if request.GET:
+                return redirect('/')
+        else:
             form = PassForm()
             context = {
                 'form':form,
                 'name':"create"
             }
-        return render(request, 'create-update.html',context)
+        return render(request, 'create-update-offers.html',context)
     except:
         raise Http404("Create Pass does not exist")
 
 def updatePass(request,idPass):
     try:
         form = None
-        passItem = Passes.object.get(id=idPass)
+        passItem = Passes.objects.get(id=idPass)
         if request.POST:
             form = PassForm(request.POST)
             obj = form.save(commit=False)
-            if form.is_valid() and passItem != obj:
+            print(passItem)
+            print("##########")
+            print(obj.namePass)
+            if form.is_valid() and (passItem.namePass != obj.namePass or passItem.daysOfUse != obj.daysOfUse or passItem.price != obj.price):
                 passItem.active = False
                 passItem.save()
                 newPass = Passes(namePass=obj.namePass,daysOfUse=obj.daysOfUse,price=obj.price)
                 newPass.save()
-        if request.GET:
+            return redirect('/')
+        else:
             form = PassForm(instance=passItem)
             context = {
                 'form':form,
                 'name':"update"
             }
-        return render(request, 'create-update.html',context)
+        return render(request, 'create-update-offers.html',context)
     except:
         raise Http404("Update Pass does not exist")
 

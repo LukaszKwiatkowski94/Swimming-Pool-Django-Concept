@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Offers | {{ name }} pass {%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/offers.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section create-update-pass">
+        <h2 class="section-header">{{name}} pass</h2>
+        <div class="wrapper">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="create-update-pass__box">
+                    <div class="create-update-pass__name">
+                        <label for="{{ form.namePass.id_for_label}}">{{ form.namePass.label }}</label>
+                        {{ form.namePass }}
+                    </div>
+                    <div class="create-update-pass__days-of-use">
+                        <label for="{{ form.daysOfUse.id_for_label}}">{{ form.daysOfUse.label }}</label>
+                        {{ form.daysOfUse }}
+                    </div>
+                    <div class="create-update-pass__price">
+                        <label for="{{ form.price.id_for_label}}">{{ form.price.label }}</label>
+                        {{ form.price }}
+                    </div>
+                    <div class="create-update-pass__btn">
+                        <button type="submit" class="btn">{{name}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock%} 

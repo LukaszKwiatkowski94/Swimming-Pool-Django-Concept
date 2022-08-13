@@ -6,7 +6,7 @@ class PassForm(ModelForm):
         model = Passes
         fields = ['namePass','daysOfUse','price']
         labels = {
-            "namePass":"Post title:",
-            "daysOfUse":"Full text:",
-            "price":"Photo to post:"
+            "namePass":"Name of pass:",
+            "daysOfUse":"Days of use:",
+            "price":"Price:"
         }
