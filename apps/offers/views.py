@@ -34,17 +34,17 @@ def createPass(request):
 def updatePass(request,idPass):
     try:
         form = None
-        instance = Passes.object.get(id=idPass)
+        passItem = Passes.object.get(id=idPass)
         if request.POST:
             form = PassForm(request.POST)
-            if form.is_valid():
-                obj = form.save(commit=False)
-                instance.active = False
-                instance.save()
+            obj = form.save(commit=False)
+            if form.is_valid() and passItem != obj:
+                passItem.active = False
+                passItem.save()
                 newPass = Passes(namePass=obj.namePass,daysOfUse=obj.daysOfUse,price=obj.price)
                 newPass.save()
         if request.GET:
-            form = PassForm(instance)
+            form = PassForm(instance=passItem)
             context = {
                 'form':form,
                 'name':"update"
