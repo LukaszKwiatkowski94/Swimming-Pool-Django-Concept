@@ -29,8 +29,26 @@
                 
                 <div class="dashboard__item">
                     <a href="{% url 'all-blog-post' %}" class="dashboard__link">
-                        <img src="{% static 'icon/list.svg' %}" alt="icon user with plus">
+                        <img src="{% static 'icon/list.svg' %}" alt="icon with list">
                         <p>Display post list</p>
+                    </a>
+                </div>
+
+			</div>
+
+            <div class="dashboard__box">
+
+                <div class="dashboard__item">
+                    <a href="{% url 'create-pass' %}" class="dashboard__link">
+                        <img src="{% static 'icon/plus-square.svg' %}" alt="icon with plus">
+                        <p>Create pass</p>
+                    </a>
+                </div>
+
+                <div class="dashboard__item">
+                    <a href="{% url 'show-all-list-passes' %}" class="dashboard__link">
+                        <img src="{% static 'icon/book-open.svg' %}" alt="icon with open book">
+                        <p>Display passes list</p>
                     </a>
                 </div>
 
