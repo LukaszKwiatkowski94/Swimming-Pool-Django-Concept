@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from .models import Passes
 
-class PostCreationForm(ModelForm):
+class PassForm(ModelForm):
     class Meta:
         model = Passes
         fields = ['namePass','daysOfUse','price','active']
