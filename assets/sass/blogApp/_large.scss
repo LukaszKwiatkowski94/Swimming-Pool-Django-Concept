@@ -32,4 +32,23 @@
             padding: 0.8em;
         }
     }
+
+    .post{
+        &__header{
+            font-size: 4.2rem;
+        }
+
+        &__created, &__like{
+            font-size: 2.6rem;
+        }
+
+        &__img{
+            height: 85%;
+        }
+
+        &__full-text{
+            font-size: 2.8rem;
+		    line-height: 3.2rem;
+        }
+    }
 }

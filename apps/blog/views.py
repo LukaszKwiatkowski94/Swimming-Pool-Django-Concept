@@ -58,9 +58,6 @@ def create(request):
         form = None
         if request.POST:
             form = PostCreationForm(request.POST or None, request.FILES)
-            print(request.POST)
-            print("###################")
-            print(form.errors.as_data())
             if form.is_valid():
                 obj = form.save(commit=False)
                 obj.author = request.user
@@ -86,10 +83,10 @@ def update(request,idPost):
         }
         if form.is_valid():
             form.save()
-            return redirect('/blog/post/'+form.id+'/')
+            return redirect('/blog/allPosts/')
         return render(request, 'create-update.html',context)
     except:
-        raise Http404("Createation Post does not exist")
+        raise Http404(" - Createation Post does not exist")
 
 def giveLike(request):
     if request.method == 'POST':
@@ -109,7 +106,7 @@ def giveLike(request):
 
 def getAllPosts(request):
     try:
-        posts = BlogPosts.objects.filter(published=True).order_by('-id')
+        posts = BlogPosts.objects.order_by('-id')
         context = {
             'posts': posts
         }

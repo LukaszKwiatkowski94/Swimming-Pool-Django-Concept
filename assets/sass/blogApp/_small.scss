@@ -7,4 +7,23 @@
             }
         }
     }
+
+    .post{
+        &__header{
+            font-size: 2.8rem;
+        }
+
+        &__created, &__like{
+            font-size: 1.8rem;
+        }
+
+        &__img{
+            object-fit: cover;
+        }
+
+        &__full-text{
+            font-size: 2.2rem;
+		    line-height: 2.8rem;
+        }
+    }
 }

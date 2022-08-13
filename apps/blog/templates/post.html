@@ -6,14 +6,11 @@
     <section class="section post">
         <div class="wrapper">
             <div class="post__box">
-                <h2 class="section-header">{{post.title}}</h2>
+                <h2 class="section-header post__header">{{post.title}}</h2>
                 <hr class="post__hr">
                 <p class="post__created">{{post.created}}</p>
-                <p class="post__author">{{post.author}}</p>
-                <p class="post__published">{{post.published}}</p>
-                <p class="post__like">{{post.liked}}</p>
-                <img src="{{post.photo}}" alt="{{post.photoAlt}}" class="post__img">
-                <p class="post__short-text">{{post.shortText}}</p>
+                <p class="post__like">Liked: {{post.liked}}</p>
+                <img src="{{post.photo.url}}" alt="{{post.photoAlt}}" class="post__img">
                 <p class="post__full-text">{{post.text}}</p>
             </div>
         </div>
