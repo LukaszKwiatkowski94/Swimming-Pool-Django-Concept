@@ -27,4 +27,31 @@
             grid-column: 2/3;
         }
     }
+
+    .all-passes{
+        &__name{
+            grid-row: 1/-1;
+            grid-column: 1/2;
+        }
+    
+        &__days-of-use{
+            grid-row: 1/-1;
+            grid-column: 2/3;
+        }
+    
+        &__price{
+            grid-row: 1/-1;
+            grid-column: 3/4;
+        }
+    
+        &__active{
+            grid-row: 1/-1;
+            grid-column: 4/5;
+        }
+    
+        &__actions{
+            grid-row: 1/-1;
+            grid-column: 5/6;
+        }
+    }
 }

@@ -61,7 +61,7 @@ def updatePass(request,idPass):
 
 def showAllListPasses(request):
     try:
-        passes = Passes.objects.all().order_by(active=True)
+        passes = Passes.objects.all().order_by('active')
         context = {
             'passes':passes
         }
