@@ -9,16 +9,16 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="create-update-pass__box">
-                    <div class="create-update-pass__name">
-                        <label for="{{ form.namePass.id_for_label}}">{{ form.namePass.label }}</label>
+                    <div class="create-update-pass__name create-update-pass__item">
+                        <label class="create-update-pass__label" for="{{ form.namePass.id_for_label}}">{{ form.namePass.label }}</label>
                         {{ form.namePass }}
                     </div>
-                    <div class="create-update-pass__days-of-use">
-                        <label for="{{ form.daysOfUse.id_for_label}}">{{ form.daysOfUse.label }}</label>
+                    <div class="create-update-pass__days-of-use create-update-pass__item">
+                        <label class="create-update-pass__label" for="{{ form.daysOfUse.id_for_label}}">{{ form.daysOfUse.label }}</label>
                         {{ form.daysOfUse }}
                     </div>
-                    <div class="create-update-pass__price">
-                        <label for="{{ form.price.id_for_label}}">{{ form.price.label }}</label>
+                    <div class="create-update-pass__price create-update-pass__item">
+                        <label class="create-update-pass__label" for="{{ form.price.id_for_label}}">{{ form.price.label }}</label>
                         {{ form.price }}
                     </div>
                     <div class="create-update-pass__btn">
