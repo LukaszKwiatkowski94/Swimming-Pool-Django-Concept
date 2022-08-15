@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Offers | List of all passes. {%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/offers.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section all-passes">
+        <h2 class="section-header">List of all passes</h2>
+        <div class="wrapper">
+            <div class="all-passes__box">
+            {% for item in passes %}
+                <div class="all-passes__item">
+                    <div class="all-passes__name all-passes__cell">{{item.namePass}}</div>     
+                    <div class="all-passes__days-of-use all-passes__cell">{{item.daysOfUse}} days</div>      
+                    <div class="all-passes__price all-passes__cell">{{item.price}} USD</div>  
+                    <div class="all-passes__active all-passes__cell">{{item.active}}</div>
+                    <div class="all-passes__actions all-passes__cell">
+                        <a href="{% url 'update-pass' item.id %}">update</a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock%} 

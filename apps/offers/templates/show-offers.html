@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Offers{%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/offers.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section show-offers">
+        <h2 class="section-header">Offers</h2>
+        <div class="wrapper">
+            <div class="show-offers__box">
+                {% for item in passes %}
+                    <div class="show-offers__item">
+                        <div class="show-offers__name">{{item.namePass}}</div>
+                        <div class="show-offers__days-of-use">{{item.daysOfUse}} days</div>
+                        <div class="show-offers__price">{{item.price}} USD</div>
+                        <div class="show-offers__buy">
+                            <button>BUY</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock%} 
