@@ -10,6 +10,10 @@ class MyUserManager(BaseUserManager):
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save()
+        if user.is_superuser:
+            from .models import Wallet
+            wallet = Wallet(user=user)
+            wallet.save()
         return user
 
     def create_superuser(self, email, password, **extra_fields):
