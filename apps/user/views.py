@@ -1,6 +1,6 @@
 import email
 from django.shortcuts import render, redirect
-from .models import User
+from .models import User, Wallet
 from .forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -14,14 +14,16 @@ from django.db.models import Q
 import json
 
 def createUser(request):
-    if request.user.is_authenticated:
-        return redirect('/')
-    else:
-        form = UserCreationForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-            return redirect('/user/signin/')
-        return render(request, 'signup.html',{'form':form})
+	if request.user.is_authenticated:
+		return redirect('/')
+	else:
+		form = UserCreationForm(request.POST or None)
+		if form.is_valid():
+			form.save()
+			wallet = Wallet(user=User.objects.get(email=form.cleaned_data['email']))
+			wallet.save()
+			return redirect('/user/signin/')
+		return render(request, 'signup.html',{'form':form})
 
 def signinPage(request):
 	if request.user.is_authenticated:

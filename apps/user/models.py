@@ -32,3 +32,6 @@ class User(AbstractUser):
     def setRole(self,newRole):
         self.role=newRole
 
+class Wallet(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, unique=True, verbose_name="User")
+    accountBalance = models.DecimalField(max_digits=7, default=0, decimal_places=2, verbose_name="Account Balance")
