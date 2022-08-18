@@ -1,2 +1,13 @@
 @media (min-width: 576px) {
+	.show-offers {
+		&__box {
+			flex-direction: row;
+			flex-wrap: wrap;
+            justify-content: space-evenly;
+		}
+
+		&__item {
+			width: auto;
+		}
+	}
 }
