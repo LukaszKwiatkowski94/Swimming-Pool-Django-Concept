@@ -83,3 +83,48 @@
 		}
 	}
 }
+
+.show-offers{
+	margin-top: calc(60px + 3rem);
+	&__box {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__item{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		min-height: 25vh;
+		margin: 1em auto;
+		padding: 1em;
+		border-radius: 1em;
+		border: none;
+		box-shadow: 0 0 5px $main-color;
+		font-size: 2.2rem;
+	}
+
+	&__name{
+		font-size: 3rem;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	&__hr{
+		height: 1px;
+		width: 75%;
+		margin: 1em auto 1.2em;
+		border-bottom: 1px dotted $main-color;
+	}
+
+	&__buy{
+		margin-top: 1em;
+	}
+
+	&__title-value{
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
