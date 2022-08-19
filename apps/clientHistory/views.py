@@ -3,7 +3,7 @@ from django.http import Http404, HttpResponse
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from .models import ClientHistoryPasses
-from user.models import User
+from apps.user.models import User
 import json
 
 def showMyHistory(request):

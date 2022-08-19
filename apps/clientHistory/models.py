@@ -1,6 +1,6 @@
 from django.db import models
-from user.models import User
-from offers.models import Passes
+from apps.user.models import User
+from apps.offers.models import Passes
 import datetime
 
 class ClientHistoryPasses(models.Model):
