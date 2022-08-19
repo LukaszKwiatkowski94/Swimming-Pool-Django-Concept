@@ -8,7 +8,7 @@ import json
 
 def showMyHistory(request):
     try:
-        historyPasses = ClientHistoryPasses.objects.filter()
+        historyPasses = ClientHistoryPasses.objects.filter(user=request.user).order_by('-id')
         context = {
             'historyPasses':historyPasses
         }

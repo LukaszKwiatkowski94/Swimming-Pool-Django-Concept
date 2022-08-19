@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% load static %} 
+{% block title %} - Client | Client History{%endblock%} 
+{% block style %}<link rel="stylesheet" href="{% static 'css/clientHistory.min.css' %}"/>{% endblock%} 
+{% block content %}
+<main>
+    <section class="section client-history">
+        <div class="wrapper">
+            <div class="client-history__box">
+            {% for item in historyPasses %}
+                <div class="client-history__namePass">{{item.passID.namePass}}</div>
+                <div class="client-history__date">{{item.dateStart}} - {{item.dateEnd}}</div>
+                <div class="client-history__active">
+                    <!-- code active -->
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{%endblock%} 
