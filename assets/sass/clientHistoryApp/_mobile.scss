@@ -1,0 +1,21 @@
+@use "../utilities/colors" as *;
+
+.client-history{
+    margin-top: calc(60px + 3rem);
+
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5em;
+        font-size: 1.8rem;
+        border: 1px dashed $main-color;
+    }
+
+    &__namePass{
+        font-weight: bold;
+    }
+
+    &__item-field{
+        margin: 0.5em;
+    }
+}
