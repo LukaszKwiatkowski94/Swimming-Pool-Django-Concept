@@ -5,26 +5,29 @@ from django.core.serializers.json import DjangoJSONEncoder
 from .models import ClientHistoryPasses
 from apps.user.models import User
 import json
+import datetime;
 
 def showMyHistory(request):
     try:
         historyPasses = ClientHistoryPasses.objects.filter(user=request.user).order_by('-id')
         context = {
-            'historyPasses':historyPasses
+            'historyPasses':historyPasses,
+            'date':datetime.date.today()
         }
     except:
         raise Http404("Client History Passes does not exist")
-    render(request,'showHistoryClient.html', context)
+    return render(request,'showHistoryClient.html', context)
 
 def showClientHistory(request,idUser):
     try:
         historyPasses = ClientHistoryPasses.objects.filter(user=idUser).order_by('-id')
         context = {
-            'historyPasses':historyPasses
+            'historyPasses':historyPasses,
+            'date':datetime.date.today()
         }
     except:
         raise Http404("Client History Passes does not exist")
-    render(request,'showHistoryClient.html', context)
+    return render(request,'showHistoryClient.html', context)
 
 def createNewPassRecord(request):
     if request.method == 'POST':

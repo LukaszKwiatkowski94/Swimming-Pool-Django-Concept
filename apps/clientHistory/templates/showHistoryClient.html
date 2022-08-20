@@ -5,12 +5,19 @@
 <main>
     <section class="section client-history">
         <div class="wrapper">
+            <h2 class="section-header">Client History</h2>
             <div class="client-history__box">
             {% for item in historyPasses %}
-                <div class="client-history__namePass">{{item.passID.namePass}}</div>
-                <div class="client-history__date">{{item.dateStart}} - {{item.dateEnd}}</div>
-                <div class="client-history__active">
-                    <!-- code active -->
+                <div class="client-history__item">
+                    <div class="client-history__namePass client-history__item-field">{{item.passID.namePass}}</div>
+                    <div class="client-history__date client-history__item-field">{{item.dateStart}} - {{item.dateEnd}}</div>
+                    <div class="client-history__active client-history__item-field">
+                        {% if item.dateEnd >= date %}
+                            Active
+                        {% else %}
+                            inactive
+                        {% endif %}
+                    </div>
                 </div>
             {% endfor %}
             </div>
