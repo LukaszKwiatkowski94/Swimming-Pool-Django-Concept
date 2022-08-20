@@ -16,17 +16,15 @@ def showMyHistory(request):
         raise Http404("Client History Passes does not exist")
     render(request,'showHistoryClient.html', context)
 
-def showClientHistory(request):
-    if request.method == 'POST':
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-        idUser = body['idUser']
-        userObj = User.objects.get(id=idUser)
-        history = ClientHistoryPasses.objects.filter(user=userObj)
-        data = serializers.serialize('json', history)
-        return HttpResponse(data, content_type='application/json')
-    else:
+def showClientHistory(request,idUser):
+    try:
+        historyPasses = ClientHistoryPasses.objects.filter(user=idUser).order_by('-id')
+        context = {
+            'historyPasses':historyPasses
+        }
+    except:
         raise Http404("Client History Passes does not exist")
+    render(request,'showHistoryClient.html', context)
 
 def createNewPassRecord(request):
     if request.method == 'POST':
