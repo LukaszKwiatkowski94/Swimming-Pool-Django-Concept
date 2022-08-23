@@ -46,10 +46,12 @@ def signinPage(request):
 
 @login_required(login_url='/user/signin')
 def dashboard(request):
+	balance = Wallet.objects.get(user=request.user)
 	context = {
 		"name" : request.user.nameUser,
 		"surname" : request.user.surnameUser,
-		"role" : request.user.get_role_display()
+		"role" : request.user.get_role_display(),
+		"balance" : balance.accountBalance
 	}
 	return render(request, 'dashboard.html', context)
 
