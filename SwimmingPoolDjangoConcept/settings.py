@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.clientHistory',
     'apps.offers',
+    'apps.transactions',
     'apps.user',
 ]
 
