@@ -4,5 +4,5 @@ from . import views
 
 
 urlpatterns = [
-    # path('', views.showMainPage, name='blog'),
+    path('buyPass/<int:idPass>/', views.showPageTransaction, name='transactions-buy-pass'),
 ]
