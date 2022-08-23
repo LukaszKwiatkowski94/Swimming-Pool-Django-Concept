@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+def showPageTransaction(request):
+    context = {}
+    return render(request,'show-page-transaction.html',context)
+
+def doTransactionPass(request):
+    return ''
