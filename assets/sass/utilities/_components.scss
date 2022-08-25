@@ -33,6 +33,13 @@
 		border-top: 2px solid transparent;
 		border-bottom: 2px solid transparent;
 	}
+
+	&--disabled{
+		background-color: transparent;
+		color: grey;
+		border: 2px solid grey;
+		pointer-events: none;
+	}
 }
 
 .form-error {
