@@ -21,7 +21,7 @@
 					>
 				</p>
 			</div>
-			{% if user.role == '2' %}
+			{% if user.role == '2' or user.is_superuser %}
 				<div class="dashboard__box">
 					<div class="dashboard__item">
 						<a href="/user/setRole/" class="dashboard__link">
@@ -34,7 +34,7 @@
 					</div>
 				</div>
 			{% endif %}
-			{% if user.role == '2' or user.role == '6' %}
+			{% if user.role == '2' or user.is_superuser %}
 				<div class="dashboard__box">
 					<div class="dashboard__item">
 						<a href="{% url 'create-blog-post' %}" class="dashboard__link">
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 			{% endif %}
-			{% if user.role == '2' or user.role == '5' %}
+			{% if user.role == '2' or user.is_superuser %}
 				<div class="dashboard__box">
 					<div class="dashboard__item">
 						<a href="{% url 'create-pass' %}" class="dashboard__link">
