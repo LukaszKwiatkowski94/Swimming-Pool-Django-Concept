@@ -5,9 +5,11 @@ from apps.offers.models import Passes
 from apps.clientHistory.models import ClientHistoryPasses
 from django.core.serializers.json import DjangoJSONEncoder
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 import json
 
+@login_required
 def showPageTransaction(request,idPass):
     try:
         wallet = Wallet.objects.get(user = request.user)
@@ -21,6 +23,7 @@ def showPageTransaction(request,idPass):
     except:
         raise Http404("Transaction does not exist")
 
+@login_required
 @csrf_exempt
 def doTransactionPass(request):
     if request.method == "POST":
