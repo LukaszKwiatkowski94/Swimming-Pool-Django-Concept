@@ -6,28 +6,39 @@
     <section class="section transaction">
         <div class="wrapper">
             <h2 class="section-header">Transaction</h2>
-            <div class="transaction__box">
-                <div class="transaction__product transaction__row">
-                    <p class="transaction__name">{{passBuy.namePass}}</p>
-                    <p class="transaction__price">{{passBuy.price}} USD</p>
+            <form>
+                <div class="transaction__box">
+                    {% csrf_token %}
+                    <input type="hidden" class="id-user" value="{{ user.id }}"> 
+                    <input type="hidden" class="id-pass" value="{{ passBuy.id }}">
+                    <input type="hidden" class="url-after-buy" value="{% url 'my-client-history' %}">
+                    <div class="transaction__product transaction__row">
+                        <p class="transaction__name">{{passBuy.namePass}}</p>
+                        <p class="transaction__price">{{passBuy.price}} USD</p>
+                    </div>
+                    <div class="transaction__balanceNow transaction__row">
+                        <p class="transaction__name">Your balance now:</p>
+                        <p class="transaction__price">{{balanceNow}} USD</p>
+                    </div>
+                    <div class="transaction__balanceAfter transaction__row">
+                        <p class="transaction__name">Your balance after purchase:</p>
+                        <p class="transaction__price">{{balanceAfter}} USD</p>
+                    </div>
+                    <p class="transaction__error transaction__disabled"></p>
+                    {% if balanceAfter < 0 %}
+                        <p class="transaction__error">You cannot buy this pass because you don't have enough money.</p>
+                        <button class="btn btn--disabled transaction__btn" disabled>You cannot buy</button>
+                    {% else %}
+                        <button class="btn transaction__btn">Buy</button>
+                    {% endif %}
                 </div>
-                <div class="transaction__balanceNow transaction__row">
-                    <p class="transaction__name">Your balance now:</p>
-                    <p class="transaction__price">{{balanceNow}} USD</p>
-                </div>
-                <div class="transaction__balanceAfter transaction__row">
-                    <p class="transaction__name">Your balance after purchase:</p>
-                    <p class="transaction__price">{{balanceAfter}} USD</p>
-                </div>
-                {% if balanceAfter < 0 %}
-                    <p class="transaction__error">You cannot buy this pass because you don't have enough money.</p>
-                    <button class="btn btn--disabled transaction__btn" disabled>You cannot buy</button>
-                {% else %}
-                    <button class="btn transaction__btn">Buy</button>
-                {% endif %}
-            </div>
+            </form>
         </div>
     </section>
 </main>
 
 {%endblock%} 
+
+{% block script %} 
+<script src="{% static 'js/transactionPass.min.js' %}"></script>
+{% endblock %}
