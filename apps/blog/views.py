@@ -1,6 +1,8 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render , redirect
 from django.core.serializers.json import DjangoJSONEncoder
+from SwimmingPoolDjangoConcept.decorators import press_spokesman_required
+from django.contrib.auth.decorators import login_required
 from .models import BlogPosts
 from .forms import PostCreationForm
 import json
@@ -53,6 +55,8 @@ def showPost(request,idPost):
         raise Http404("BlogPosts does not exist")
     return render(request, 'post.html', context)
 
+@login_required
+@press_spokesman_required
 def create(request):
     try:
         form = None
@@ -73,6 +77,8 @@ def create(request):
     except:
         raise Http404("Createation Post does not exist")
 
+@login_required
+@press_spokesman_required
 def update(request,idPost):
     try:
         post = BlogPosts.objects.get(id=idPost)
@@ -104,6 +110,8 @@ def giveLike(request):
     else:
         raise Http404("Give Like for post does not exist")
 
+@login_required
+@press_spokesman_required
 def getAllPosts(request):
     try:
         posts = BlogPosts.objects.order_by('-id')

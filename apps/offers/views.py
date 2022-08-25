@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from .models import Passes
 from .forms import PassForm
 from django.core.serializers.json import DjangoJSONEncoder
+from django.contrib.auth.decorators import login_required
+from SwimmingPoolDjangoConcept.decorators import accountant_required
 import json
 
 def show(request):
@@ -15,6 +17,8 @@ def show(request):
     except:
         raise Http404("Get Passes does not exist")
 
+@login_required
+@accountant_required
 def createPass(request):
     try:
         form = None
@@ -33,6 +37,8 @@ def createPass(request):
     except:
         raise Http404("Create Pass does not exist")
 
+@login_required
+@accountant_required
 def updatePass(request,idPass):
     try:
         form = None
@@ -40,9 +46,6 @@ def updatePass(request,idPass):
         if request.POST:
             form = PassForm(request.POST)
             obj = form.save(commit=False)
-            print(passItem)
-            print("##########")
-            print(obj.namePass)
             if form.is_valid() and (passItem.namePass != obj.namePass or passItem.daysOfUse != obj.daysOfUse or passItem.price != obj.price):
                 passItem.active = False
                 passItem.save()
@@ -59,6 +62,8 @@ def updatePass(request,idPass):
     except:
         raise Http404("Update Pass does not exist")
 
+@login_required
+@accountant_required
 def showAllListPasses(request):
     try:
         passes = Passes.objects.all().order_by('active')
@@ -69,6 +74,8 @@ def showAllListPasses(request):
     except:
         raise Http404("Passes does not exist")
 
+@login_required
+@accountant_required
 def deactivatePass(request):
     if request.POST:
         try:

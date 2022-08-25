@@ -4,9 +4,12 @@ from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from .models import ClientHistoryPasses
 from apps.user.models import User
+from django.contrib.auth.decorators import login_required
+from SwimmingPoolDjangoConcept.decorators import customer_service_required
 import json
 import datetime;
 
+@login_required
 def showMyHistory(request):
     try:
         historyPasses = ClientHistoryPasses.objects.filter(user=request.user).order_by('-id')
@@ -18,6 +21,8 @@ def showMyHistory(request):
         raise Http404("Client History Passes does not exist")
     return render(request,'showHistoryClient.html', context)
 
+@login_required
+@customer_service_required
 def showClientHistory(request,idUser):
     try:
         historyPasses = ClientHistoryPasses.objects.filter(user=idUser).order_by('-id')
@@ -29,6 +34,7 @@ def showClientHistory(request,idUser):
         raise Http404("Client History Passes does not exist")
     return render(request,'showHistoryClient.html', context)
 
+@login_required
 def createNewPassRecord(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')

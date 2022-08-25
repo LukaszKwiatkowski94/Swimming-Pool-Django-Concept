@@ -92,7 +92,7 @@ def getUsersList(request):
 	else:
 		raise Http404
 
-# @administrator_required
+@administrator_required
 def getUser(request):
 	if request.is_ajax():
 		user = ""
