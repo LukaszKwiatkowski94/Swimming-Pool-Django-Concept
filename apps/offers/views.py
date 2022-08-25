@@ -43,9 +43,6 @@ def updatePass(request,idPass):
         if request.POST:
             form = PassForm(request.POST)
             obj = form.save(commit=False)
-            print(passItem)
-            print("##########")
-            print(obj.namePass)
             if form.is_valid() and (passItem.namePass != obj.namePass or passItem.daysOfUse != obj.daysOfUse or passItem.price != obj.price):
                 passItem.active = False
                 passItem.save()
