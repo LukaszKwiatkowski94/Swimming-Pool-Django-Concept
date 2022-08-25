@@ -70,6 +70,18 @@ User{%endblock%} {% block style %}<link
 					</a>
 				</div>
 			</div>
+
+			<div class="dashboard__box">
+				<div class="dashboard__item">
+					<a href="{% url 'my-client-history' %}" class="dashboard__link">
+						<img
+							src="{% static 'icon/book-open.svg' %}"
+							alt="icon with open book"
+						/>
+						<p>My Passes</p>
+					</a>
+				</div>
+			</div>
 		</div>
 	</section>
 </main>
