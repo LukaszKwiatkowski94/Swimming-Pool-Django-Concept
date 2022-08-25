@@ -5,6 +5,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from .models import ClientHistoryPasses
 from apps.user.models import User
 from django.contrib.auth.decorators import login_required
+from SwimmingPoolDjangoConcept.decorators import customer_service_required
 import json
 import datetime;
 
@@ -21,6 +22,7 @@ def showMyHistory(request):
     return render(request,'showHistoryClient.html', context)
 
 @login_required
+@customer_service_required
 def showClientHistory(request,idUser):
     try:
         historyPasses = ClientHistoryPasses.objects.filter(user=idUser).order_by('-id')
